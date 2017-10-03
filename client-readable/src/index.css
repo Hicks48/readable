@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+h1 {
+  margin: 20px;
+  letter-spacing: 1px;
+}
+
+.container {
+  margin: 20px 30px;
+}
+
+.basic-margin {
+  margin: 8px 0px;
+}
+
+btn:hover {
+  cursor: pointer;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0px;
+}
+
+.category-list-item {
+  display: inline;
+  margin: 0px 8px;
+  font-size: 120%;
+}
+
+.category-list-item:first-child {
+  margin-left: 0px;
+}
+
+.posts-list-item a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.posts-list-item:hover, .posts-list-item-link:hover, .posts-list-item h6:hover {
+  cursor: pointer;
+  color: #ecf0f1;
+  background-color: #3498db;
+}

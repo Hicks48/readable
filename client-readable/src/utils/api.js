@@ -22,6 +22,7 @@ export function fetchPostDetails(postId) {
 }
 
 export function postNewPost(post) {
+    console.log(post)
     return doPostRequest(`posts/${post.id}`, post)
 }
 
@@ -30,7 +31,7 @@ export function putEditPost(post) {
 }
 
 function doPostRequest(resourcePath, data) {
-    return fetch(getRequestAddress(resourcePath), getPostRequestHeaders(data)).then((response) => ( response.json() ))
+    return fetch(getRequestAddress(resourcePath), getPostRequestHeaders(data)).then((response) => ( response ))
 }
 
 function doPutRequest(resourcePath, data) {

@@ -5,7 +5,9 @@ export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 export const FETCH_POSTS_FOR_CATEGORIES = 'FETCH_POSTS_FOR_CATEGORIES'
 export const FETCH_COMMENTS_FOR_POST = 'FETCH_COMMENTS_FOR_POST'
 export const FETCH_POST_DETAILS = 'FETCH_POST_DETAILS'
-export const CREATE_OR_EDIT_POST = 'CREATE_OR_EDIT_POST'
+export const CLEAR_SELECTED_POST = 'CLEAR_SELECTED_POST'
+export const CREATE_POST = 'CREATE_POST'
+export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 
 const receivePosts = (posts) => ({
@@ -53,15 +55,24 @@ export const fetchPostDetails = (postId) => (dispatch) => (
     API.fetchPostDetails(postId).then(postDetails => dispatch(receivePostDetails(postDetails)))
 )
 
-const receiveNewOrEditPost = (post) => ({
-    type: CREATE_OR_EDIT_POST,
+export const clearSelectedPost = () => ({
+    type: CLEAR_SELECTED_POST
+})
+
+const receiveCreatePost = (post) => ({
+    type: CREATE_POST,
     post
 })
 
-export const createNewOrEditPost = (post) => (dispatch) => {
-    if (post.id) {
-        API.putEditPost(post).then(responsePost => dispatch(receiveNewOrEditPost(responsePost)))
-    } else {
-        API.postNewPost(post).then(responsePost => dispatch(receiveNewOrEditPost(responsePost)))
-    }
+const receiveEditPost = (post) => ({
+    type: EDIT_POST,
+    post
+})
+
+export const createPost = (post) => (dispatch) => {
+    API.postNewPost(post).then(responsePost => dispatch(receiveCreatePost(responsePost)))
+}
+
+export const editPost = (post) => (dispatch) => {
+    API.putEditPost(post).then(responsePost => dispatch(receiveEditPost(responsePost)))
 }

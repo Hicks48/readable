@@ -15,6 +15,10 @@ class PostForm extends React.Component {
         this.handleOnSubmit = this.handleOnSubmit.bind(this)
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState(nextProps.post)
+    }
+
     handleTitleChange(event) {
         this.setState({ ...this.state, title: event.target.value })
     }
@@ -34,6 +38,7 @@ class PostForm extends React.Component {
     handleOnSubmit(event) {
         const { submitPost } = this.props
         event.preventDefault()
+        submitPost(this.state)
     }
 
     render() {
@@ -58,7 +63,9 @@ class PostForm extends React.Component {
                             value={this.state.category}
                             onChange={this.handleCategoryChange}
                         >
-                            <option>todo</option>
+                            {categories.map((category) => (
+                                <option key={category.name}>{category.name}</option>
+                            ))}
                         </select>
                     </div>
                     <div className='form-group'>

@@ -1,4 +1,4 @@
-import { FETCH_POST_DETAILS, FETCH_COMMENTS_FOR_POST } from '../actions'
+import { FETCH_POST_DETAILS, FETCH_COMMENTS_FOR_POST, CLEAR_SELECTED_POST } from '../actions'
 
 const defaultState = {
     postDetails: null,
@@ -13,6 +13,9 @@ export function selectedPost(state = defaultState, action) {
 
         case FETCH_COMMENTS_FOR_POST:
             return { ...state, comments: action.comments }
+
+        case CLEAR_SELECTED_POST:
+            return defaultState
 
         default:
             return state

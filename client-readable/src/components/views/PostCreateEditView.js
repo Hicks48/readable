@@ -1,5 +1,6 @@
 import React from 'react'
 
+import FrontPageLink from '../FrontPageLink'
 import PostForm from '../posts/PostForm'
 
 import { connect } from 'react-redux'
@@ -50,6 +51,7 @@ class PostCreateEditView extends React.Component {
 
         return (
             <div>
+                <FrontPageLink/>
                 <h1>PostCreateEditView</h1>
                 <PostForm 
                     post={post} 

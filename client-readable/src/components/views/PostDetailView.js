@@ -3,6 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPostDetails, fetchCommentsForPost } from '../../actions'
 
+import FrontPageLink from '../FrontPageLink'
 import PostDetails from '../posts/PostDetails'
 import CommentsList from '../comments/CommentsList'
 
@@ -20,6 +21,7 @@ class PostDetailView extends React.Component {
 
         return (
             <div>
+                <FrontPageLink/>
                 <h1>Post Details</h1>
                 <PostDetails postDetails={postDetails}/>
                 <CommentsList comments={comments}/>

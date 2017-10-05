@@ -3,6 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPosts, fetchCategories, deletePost } from '../../actions'
 
+import FrontPageLink from '../FrontPageLink'
 import CategoriesList from '../categories/CategoriesList'
 import PostList from '../posts/PostList'
 
@@ -18,7 +19,7 @@ class FrontView extends React.Component {
         
         return (
             <div>
-                <h1>Readable App</h1>
+                <FrontPageLink/>
                 <CategoriesList categories={categories}/>
                 <PostList posts={posts} history={history} onDelete={(post) => deletePost(post)}/>
             </div>

@@ -6,7 +6,15 @@ class CommentsListItem extends React.Component {
         const { comment } = this.props
 
         return (
-            <li>{comment.body}</li>
+            <li className='list-group-item'>
+                <div>Comment by: {comment.author} at {comment.timestamp}</div>
+                <div>Votes: {comment.voteScore}</div>
+                <div>{comment.body}</div>
+                <div>
+                    <button className='btn btn-danger side-margin'>Delete</button>
+                    <button className='btn btn-warning side-margin'>Edit</button>
+                </div>
+            </li>
         )
     }
 }

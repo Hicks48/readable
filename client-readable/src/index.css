@@ -32,6 +32,10 @@ h1 a:hover {
   cursor: pointer;
 }
 
+.side-margin {
+  margin: 0px 8px;
+}
+
 .category-list {
   list-style: none;
   padding: 0px;

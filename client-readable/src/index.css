@@ -18,7 +18,7 @@ h1 {
   margin: 8px 0px;
 }
 
-btn:hover {
+.btn:hover {
   cursor: pointer;
 }
 

@@ -63,6 +63,7 @@ class PostForm extends React.Component {
                             value={this.state.category}
                             onChange={this.handleCategoryChange}
                         >
+                            <option>none</option>
                             {categories.map((category) => (
                                 <option key={category.name}>{category.name}</option>
                             ))}

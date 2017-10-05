@@ -22,8 +22,7 @@ export function fetchPostDetails(postId) {
 }
 
 export function postNewPost(post) {
-    console.log(post)
-    return doPostRequest(`posts/${post.id}`, post)
+    return doPostRequest(`posts`, post)
 }
 
 export function putEditPost(post) {

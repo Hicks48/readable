@@ -6,6 +6,11 @@ import PostListItem from './PostListItem'
 
 class PostList extends React.Component {
 
+    onPostSelect = (post) => {
+        const { history } = this.props
+        history.push(`/post/${post.id}`)
+    }
+
     render() {
         const { posts } = this.props
 
@@ -17,7 +22,7 @@ class PostList extends React.Component {
                 </div>
                 <ol className='list-group'>
                     {posts.map((post) => (
-                        <PostListItem key={post.id} post={post}/>
+                        <PostListItem key={post.id} post={post} onPostSelect={this.onPostSelect}/>
                     ))}
                 </ol>
             </div>

@@ -29,12 +29,20 @@ export function putEditPost(post) {
     return doPutRequest(`posts/${post.id}`, post)
 }
 
+export function deletePost(post) {
+    return doDeleteRequest(`posts/${post.id}`, {})
+}
+
 function doPostRequest(resourcePath, data) {
-    return fetch(getRequestAddress(resourcePath), getPostRequestHeaders(data)).then((response) => ( response ))
+    return fetch(getRequestAddress(resourcePath), getPostRequestHeaders(data)).then((response) => ( response.json() ))
 }
 
 function doPutRequest(resourcePath, data) {
     return fetch(getRequestAddress(resourcePath), getPutRequestHeaders(data)).then((response) => ( response.json() ))
+}
+
+function doDeleteRequest(resourcePath, data) {
+    return fetch(getRequestAddress(resourcePath), getDeleteRequestHeaders(data)).then((response) => ( response.json() ))
 }
 
 function doGetRequest(resourcePath) {
@@ -51,6 +59,10 @@ function getPostRequestHeaders(data) {
 
 function getPutRequestHeaders(data) {
     return getGeneralRequestHeader('put', data)
+}
+
+function getDeleteRequestHeaders(data) {
+    return getGeneralRequestHeader('delete', data)
 }
 
 function getGetRequestHeader() {

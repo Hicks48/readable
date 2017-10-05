@@ -76,3 +76,12 @@ export const createPost = (post) => (dispatch) => {
 export const editPost = (post) => (dispatch) => {
     API.putEditPost(post).then(responsePost => dispatch(receiveEditPost(responsePost)))
 }
+
+const receiveDeletePost = (post) => ({
+    type: DELETE_POST,
+    post
+})
+
+export const deletePost = (post) => (dispatch) => {
+    API.deletePost(post).then(responsePost => dispatch(receiveDeletePost(responsePost)))
+}

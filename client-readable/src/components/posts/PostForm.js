@@ -36,9 +36,10 @@ class PostForm extends React.Component {
     }
 
     handleOnSubmit(event) {
-        const { submitPost } = this.props
+        const { submitPost, history } = this.props
         event.preventDefault()
         submitPost(this.state)
+        history.push('/')
     }
 
     render() {

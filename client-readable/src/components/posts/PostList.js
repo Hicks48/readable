@@ -12,7 +12,7 @@ class PostList extends React.Component {
     }
 
     render() {
-        const { posts } = this.props
+        const { posts, onDelete } = this.props
 
         return (
             <div className='container'>
@@ -21,8 +21,8 @@ class PostList extends React.Component {
                     <Link to='post/editornew/new' className='btn btn-success'>Create New Post</Link>
                 </div>
                 <ol className='list-group'>
-                    {posts.map((post) => (
-                        <PostListItem key={post.id} post={post} onPostSelect={this.onPostSelect}/>
+                    {posts.filter((post) => !post.deleted).map((post) => (
+                        <PostListItem key={post.id} post={post} onPostSelect={this.onPostSelect} onDelete={onDelete}/>
                     ))}
                 </ol>
             </div>

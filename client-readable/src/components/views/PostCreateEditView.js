@@ -45,13 +45,18 @@ class PostCreateEditView extends React.Component {
     }
 
     render() {
-        const { selectedPost, categories } = this.props
+        const { selectedPost, categories, history } = this.props
         const post = selectedPost.postDetails !== null ? selectedPost.postDetails : this.getEmptyPost()
 
         return (
             <div>
                 <h1>PostCreateEditView</h1>
-                <PostForm post={post} categories={categories} submitPost={this.submitPost}/>
+                <PostForm 
+                    post={post} 
+                    categories={categories} 
+                    submitPost={this.submitPost}
+                    history={history}
+                />
             </div>
         )
     }

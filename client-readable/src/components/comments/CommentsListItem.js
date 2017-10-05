@@ -1,5 +1,7 @@
 import React from 'react'
 
+import TimestampSpan from '../common/TimestampSpan'
+
 class CommentsListItem extends React.Component {
 
     render() {
@@ -7,7 +9,7 @@ class CommentsListItem extends React.Component {
 
         return (
             <li className='list-group-item'>
-                <div>Comment by: {comment.author} at {comment.timestamp}</div>
+                <div>Comment by: {comment.author} at <TimestampSpan timestamp={comment.timestamp}/></div>
                 <div>Votes: {comment.voteScore}</div>
                 <div>{comment.body}</div>
                 <div>

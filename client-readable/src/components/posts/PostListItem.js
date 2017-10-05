@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
+import TimestampSpan from '../common/TimestampSpan'
+
 class PostListItem extends React.Component {
 
     onPostClick = (event, post) => {
@@ -21,7 +23,7 @@ class PostListItem extends React.Component {
                 <div className='card posts-list-item' onClick={(event) => this.onPostClick(event, post)}>
                     <div className='card-body'>
                         <h4 className='card-title'>{post.title}</h4>
-                        <h6 className='card-subtitle mb-2'>by {post.author} at {post.timestamp}</h6>
+                        <h6 className='card-subtitle mb-2'>by {post.author} at <TimestampSpan timestamp={post.timestamp}/></h6>
                         <h6 className='card-subtitle mb-2'>category: {post.category}</h6>
                         <Link to={`post/editornew/${post.id}`} className='card-link btn btn-warning'>Edit</Link>
                         <button 

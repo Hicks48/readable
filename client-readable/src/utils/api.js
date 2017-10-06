@@ -33,6 +33,18 @@ export function deletePost(post) {
     return doDeleteRequest(`posts/${post.id}`, {})
 }
 
+export function postComment(comment) {
+    return doPostRequest('comments', comment)
+}
+
+export function putComment(comment) {
+    return doPutRequest('comments', comment)
+}
+
+export function deleteComment(comment) {
+    return doDeleteRequest(`comments/${comment.id}`, {})
+}
+
 function doPostRequest(resourcePath, data) {
     return fetch(getRequestAddress(resourcePath), getPostRequestHeaders(data)).then((response) => ( response.json() ))
 }

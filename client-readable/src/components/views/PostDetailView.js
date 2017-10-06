@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { fetchPostDetails, fetchCommentsForPost } from '../../actions'
+import { fetchPostDetails, fetchCommentsForPost, createComment, editComment, deleteComment } from '../../actions'
 
 import FrontPageLink from '../FrontPageLink'
 import PostDetails from '../posts/PostDetails'
@@ -17,6 +17,7 @@ class PostDetailView extends React.Component {
     }
 
     render() {
+        const { createComment, editComment } = this.props
         const { postDetails, comments } = this.props.selectedPost
 
         return (
@@ -24,7 +25,12 @@ class PostDetailView extends React.Component {
                 <FrontPageLink/>
                 <h1>Post Details</h1>
                 <PostDetails postDetails={postDetails}/>
-                <CommentsList comments={comments}/>
+                <CommentsList
+                    comments={comments}
+                    createComment={createComment}
+                    editComment={editComment}
+                    parentPost={postDetails}
+                />
             </div>
         )
     }
@@ -39,7 +45,10 @@ function mapStateToProps({ selectedPost }) {
 function mapDispatchToProps(dispatch) {
     return {
         fetchPostDetails: (postId) => dispatch(fetchPostDetails(postId)),
-        fetchCommentsForPost: (postId) => dispatch(fetchCommentsForPost(postId))
+        fetchCommentsForPost: (postId) => dispatch(fetchCommentsForPost(postId)),
+        createComment: (comment) => dispatch(createComment(comment)),
+        editComment: (comment) => dispatch(editComment(comment)),
+        deleteComment: (comment) => dispatch(deleteComment(comment))
     }
 }
 

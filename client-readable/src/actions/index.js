@@ -9,6 +9,9 @@ export const CLEAR_SELECTED_POST = 'CLEAR_SELECTED_POST'
 export const CREATE_POST = 'CREATE_POST'
 export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
+export const CREATE_COMMENT = 'CREATE_COMMENT'
+export const EDIT_COMMENT = 'EDIT_COMMENT'
+export const DELETE_COMMENT = 'DELETE_COMMENT'
 
 const receivePosts = (posts) => ({
     type: FETCH_POSTS,
@@ -84,4 +87,31 @@ const receiveDeletePost = (post) => ({
 
 export const deletePost = (post) => (dispatch) => {
     API.deletePost(post).then(responsePost => dispatch(receiveDeletePost(responsePost)))
+}
+
+const receiveCreateComment = (comment) => ({
+    type: CREATE_COMMENT,
+    comment
+})
+
+export const createComment = (comment) => (dispatch) => {
+    API.postComment(comment).then(responseComment => dispatch(receiveCreateComment(comment)))
+}
+
+const receiveEditComment = (comment) => ({
+    type: EDIT_COMMENT,
+    comment
+})
+
+export const editComment = (comment) => (dispatch) => {
+    API.putComment(comment).then(responseComment => dispatch(receiveEditComment(comment)))
+}
+
+const receiveDeleteComment = (comment) => ({
+    type: DELETE_COMMENT,
+    comment
+})
+
+export const deleteComment = (comment) => (dispatch) => {
+    API.deleteComment(comment).then(responseComment => dispatch(receiveDeleteComment(comment)))
 }

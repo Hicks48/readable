@@ -64,7 +64,7 @@ h1 a:hover {
 
 .comment-form-modal.modal-visible {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 25%;
   left: 25%;
   background-color: #ecf0f1;

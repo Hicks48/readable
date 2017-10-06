@@ -5,7 +5,6 @@ class CommentForm extends React.Component {
     defaultState = {
         author: '',
         body: '',
-        modalVisible: false
     }
 
     constructor(props) {
@@ -15,15 +14,12 @@ class CommentForm extends React.Component {
 
         this.handleAuthorChange = this.handleAuthorChange.bind(this)
         this.handleBodyChange = this.handleBodyChange.bind(this)
-        this.onClose = this.onClose.bind(this)
         this.onFormSubmit = this.onFormSubmit.bind(this)
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.comment) {
-            this.setState({ ...nextProps.comment, modalVisible: nextProps.modalVisible })
-        } else {
-            this.setState({ ...this.state, modalVisible: nextProps.modalVisible })
+            this.setState({ ...nextProps.comment })
         }
     }
 
@@ -35,21 +31,19 @@ class CommentForm extends React.Component {
         this.setState({ ...this.state, body: event.target.value })
     }
 
-    onClose() {
-        this.setState({ ...this.state, modalVisible: false })
-    }
-
     onFormSubmit(event) {
-        const { onCommentSubmit } = this.props
-        const { author, body } = this.state
+        const { onCommentSubmit, onClose } = this.props
+        const comment = this.state
 
         event.preventDefault()
-        onCommentSubmit({ author, body })
         this.setState({ ...this.defaultState })
+
+        onClose()
+        onCommentSubmit(comment)
     }
 
     render() {
-        const { modalVisible } = this.state
+        const { modalVisible, onClose } = this.props
 
         return (
             <div className={`comment-form-modal ${modalVisible ? 'modal-visible' : 'modal-invisible' }`}>
@@ -78,7 +72,7 @@ class CommentForm extends React.Component {
                         <button 
                             type="button" 
                             className="btn btn-info side-margin"
-                            onClick={this.onClose}
+                            onClick={onClose}
                         >
                             Close
                         </button>

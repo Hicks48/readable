@@ -35,7 +35,9 @@ export function selectedPost(state = defaultState, action) {
 
         case DELETE_COMMENT:
             const deletedComment = action.comment
-            return { ...state, comments: state.comments.filter((comment) => !comment.id === deletedComment.id) }
+            return { ...state, comments: state.comments.map((comment) => (
+                comment.id === deletedComment.id ? deletedComment : comment
+            )) }
 
         default:
             return state

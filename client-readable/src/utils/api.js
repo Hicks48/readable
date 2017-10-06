@@ -38,7 +38,7 @@ export function postComment(comment) {
 }
 
 export function putComment(comment) {
-    return doPutRequest('comments', comment)
+    return doPutRequest(`comments/${comment.id}`, comment)
 }
 
 export function deleteComment(comment) {

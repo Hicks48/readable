@@ -20,6 +20,10 @@ class CommentsList extends React.Component {
         this.setState({ modalVisible: true })
     }
 
+    onModalClose = () => {
+        this.setState({ modalVisible: false })
+    }
+
     onCommentEdit = (comment) => {
         this.setState({ ...this.state, comment, modalVisible: true })
     }
@@ -39,6 +43,7 @@ class CommentsList extends React.Component {
         comment.deleted = false
         comment.parentDeleted = false
 
+        console.log(isNewComment)
         isNewComment ? createComment(comment) : editComment(comment)
     }
 
@@ -52,6 +57,7 @@ class CommentsList extends React.Component {
                     modalVisible={modalVisible} 
                     comment={comment} 
                     onCommentSubmit={this.onCommentSubmit}
+                    onClose={this.onModalClose}
                 />
                 <h2>Comments:</h2>
                 <div className='basic-margin'>
@@ -60,13 +66,15 @@ class CommentsList extends React.Component {
                 </button>
                 </div>
                 <ul>
-                    {comments.filter((comment) => !comment.deleted).map((comment) => (
-                        <CommentsListItem 
-                            key={comment.id} 
-                            comment={comment}
-                            onCommentEdit={this.onCommentEdit}
-                            onCommentDelete={deleteComment}
-                        />
+                    {comments.filter((comment) => !comment.deleted)
+                        .sort((comment1, comment2) => comment2.voteScore - comment1.voteScore)
+                        .map((comment) => (
+                            <CommentsListItem 
+                                key={comment.id} 
+                                comment={comment}
+                                onCommentEdit={this.onCommentEdit}
+                                onCommentDelete={deleteComment}
+                            />
                     ))}
                 </ul>
             </div>

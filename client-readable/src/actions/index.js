@@ -95,7 +95,7 @@ const receiveCreateComment = (comment) => ({
 })
 
 export const createComment = (comment) => (dispatch) => {
-    API.postComment(comment).then(responseComment => dispatch(receiveCreateComment(comment)))
+    API.postComment(comment).then(responseComment => dispatch(receiveCreateComment(responseComment)))
 }
 
 const receiveEditComment = (comment) => ({
@@ -104,7 +104,7 @@ const receiveEditComment = (comment) => ({
 })
 
 export const editComment = (comment) => (dispatch) => {
-    API.putComment(comment).then(responseComment => dispatch(receiveEditComment(comment)))
+    API.putComment(comment).then(responseComment => dispatch(receiveEditComment(responseComment)))
 }
 
 const receiveDeleteComment = (comment) => ({
@@ -113,5 +113,5 @@ const receiveDeleteComment = (comment) => ({
 })
 
 export const deleteComment = (comment) => (dispatch) => {
-    API.deleteComment(comment).then(responseComment => dispatch(receiveDeleteComment(comment)))
+    API.deleteComment(comment).then(responseComment => dispatch(receiveDeleteComment(responseComment)))
 }

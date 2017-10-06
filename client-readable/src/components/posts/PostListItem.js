@@ -25,9 +25,10 @@ class PostListItem extends React.Component {
                         <h4 className='card-title'>{post.title}</h4>
                         <h6 className='card-subtitle mb-2'>by {post.author} at <TimestampSpan timestamp={post.timestamp}/></h6>
                         <h6 className='card-subtitle mb-2'>category: {post.category}</h6>
-                        <Link to={`post/editornew/${post.id}`} className='card-link btn btn-warning'>Edit</Link>
+                        <h6 className='card-subtitle mb-2'>score: {post.voteScore}</h6>
+                        <Link to={`/post/editornew/${post.id}`} className='card-link btn btn-warning'>Edit</Link>
                         <button 
-                            type='button' 
+                            type='button'
                             className='card-link btn btn-danger'
                             onClick={() => onDelete(post)}
                         >

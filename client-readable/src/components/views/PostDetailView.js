@@ -17,7 +17,7 @@ class PostDetailView extends React.Component {
     }
 
     render() {
-        const { createComment, editComment } = this.props
+        const { createComment, editComment, deleteComment } = this.props
         const { postDetails, comments } = this.props.selectedPost
 
         return (
@@ -29,6 +29,7 @@ class PostDetailView extends React.Component {
                     comments={comments}
                     createComment={createComment}
                     editComment={editComment}
+                    deleteComment={deleteComment}
                     parentPost={postDetails}
                 />
             </div>

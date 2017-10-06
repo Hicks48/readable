@@ -20,6 +20,10 @@ class CommentsList extends React.Component {
         this.setState({ modalVisible: true })
     }
 
+    onCommentEdit = (comment) => {
+        this.setState({ ...this.state, comment, modalVisible: true })
+    }
+
     onCommentSubmit = (comment) => {
         const { createComment, editComment, parentPost } = this.props
 
@@ -39,7 +43,7 @@ class CommentsList extends React.Component {
     }
 
     render() {
-        const { comments } = this.props
+        const { comments, deleteComment } = this.props
         const { modalVisible, comment } = this.state
 
         return (
@@ -57,7 +61,12 @@ class CommentsList extends React.Component {
                 </div>
                 <ul>
                     {comments.filter((comment) => !comment.deleted).map((comment) => (
-                        <CommentsListItem key={comment.id} comment={comment}/>
+                        <CommentsListItem 
+                            key={comment.id} 
+                            comment={comment}
+                            onCommentEdit={this.onCommentEdit}
+                            onCommentDelete={deleteComment}
+                        />
                     ))}
                 </ul>
             </div>

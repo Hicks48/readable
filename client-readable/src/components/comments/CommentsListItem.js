@@ -5,7 +5,7 @@ import TimestampSpan from '../common/TimestampSpan'
 class CommentsListItem extends React.Component {
 
     render() {
-        const { comment } = this.props
+        const { comment, onCommentDelete, onCommentEdit } = this.props
 
         return (
             <li className='list-group-item'>
@@ -13,8 +13,18 @@ class CommentsListItem extends React.Component {
                 <div>Votes: {comment.voteScore}</div>
                 <div>{comment.body}</div>
                 <div>
-                    <button className='btn btn-danger side-margin'>Delete</button>
-                    <button className='btn btn-warning side-margin'>Edit</button>
+                    <button 
+                        className='btn btn-danger side-margin'
+                        onClick={() => onCommentDelete(comment)}
+                    >
+                            Delete
+                    </button>
+                    <button 
+                        className='btn btn-warning side-margin'
+                        onClick={() => onCommentEdit(comment)}
+                    >
+                        Edit
+                    </button>
                 </div>
             </li>
         )

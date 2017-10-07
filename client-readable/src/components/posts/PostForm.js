@@ -39,7 +39,7 @@ class PostForm extends React.Component {
         const { submitPost, history } = this.props
         event.preventDefault()
         submitPost(this.state)
-        history.push('/')
+        history.goBack()
     }
 
     render() {

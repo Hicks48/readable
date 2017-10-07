@@ -19,7 +19,7 @@ terminal navigate to `client-readable` folder and run the commands:
 * `npm install`
 * `npm start`
 
-You now have the client readable server running in `localhost:3000`. With your browser navigate url `http://localhost:3000/`.
+You now have the client readable server running in `localhost:3000`. With your browser navigate to url `http://localhost:3000/`.
 
 
 ## Developing
@@ -43,7 +43,7 @@ can be found in `client-readable/src/utils/api.js`
 
 #### API Endpoint
 
-These are the endpoints of the server API provided by Udacity:
+These are the endpoints of the server API provided by Udacity. Implementations can be found in `api-server/server.js`.
 
 | Endpoints       | Usage          | Params         |
 |-----------------|----------------|----------------|

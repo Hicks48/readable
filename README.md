@@ -1,52 +1,49 @@
-# Readable API Server
+# Readable Project
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+This project is part of Udacitys course React Nanodegree.
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
 
-## Start Developing
+## Project description
 
-To get started developing right away:
 
-* Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
-    - `cd frontend`
-    - `npm start`
+## Running the project
+
+To run the project you need to install all the dependencies for the API server and the client-readable projects. Open two terminal windows. With one of them navigate to `api-server` folder and run commands:
+
+* `npm install`
+* `npm start`
+
+You now have the API server running in `localhost:3001`. To start the client-readable with the other
+terminal navigate to `client-readable` folder and run the commands:
+
+* `npm install`
+* `npm start`
+
+You now have the client readable server running in `localhost:3000`. With your browser navigate url `http://localhost:3000/`.
+
+
+## Developing
+
+First you need to be able to start the project. Look instructions from the `Running the project` section.
+
 
 ## API Server
 
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+The API server was provided by Udacity for the project. Its implementation can be found in
+`api-server`. In order to install the servers dependencies run `npm install` inside the `api-server`
+folder. To run the server run `npm start` inside the `api-server` folder.
 
+### Using The Server
 
-# API Server
+#### Include An Authorization Header
 
-To install and start the API server, run the following commands in this directory:
+All requests should use an **Authorization header**. It at the moment doesn't matter what this
+header contains but it must be present in each request. The implementation for sending request
+can be found in `client-readable/src/utils/api.js`
 
-* `npm install`
-* `node server`
+#### API Endpoint
 
-## Using The Server
-
-### Include An Authorization Header
-
-All requests should use an **Authorization header** to work with your own data:
-
-```js
-fetch(
-    url,
-    {
-        headers: { 'Authorization': 'whatever-you-want' }
-    }
-)
-```
-
-### API Endpoint
-
-The following endpoints are available:
+These are the endpoints of the server API provided by Udacity:
 
 | Endpoints       | Usage          | Params         |
 |-----------------|----------------|----------------|

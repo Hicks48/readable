@@ -4,7 +4,21 @@ This project is part of Udacitys course React Nanodegree.
 
 
 ## Project description
+In this project user is able to add posts and comments to those posts. The project also includes
+functionality to edit and delete posts. Each post can also have a category but there currently is
+no way to add categories. The project has four views: main, post details, post form and category. 
 
+Note: Each post has a author put there is no authentication or any identified user functionality in the project beyond this. The forms are at the moment also missing proper validations for input.
+
+* Main view lists all posts and categories. User can always get back to main view by clicking on the
+Readable App header on top of each page.
+
+* Category view lists all posts for a selected category. User can get to the category view by
+clicking a category on the main view.
+
+* Post Details view lists all details of the selected post as well as all of its comments. The comments also have the add, delete and edit functionalities.
+
+* Post form can be used to create a new post or edit existing one. It is accesible from the create new post and edit buttons.
 
 ## Running the project
 
@@ -26,6 +40,21 @@ You now have the client readable server running in `localhost:3000`. With your b
 
 First you need to be able to start the project. Look instructions from the `Running the project` section.
 
+### Project structure
+
+The project is structured on the top level to `api-server` and `client-readable` projects. The API server is the backend provided by Udacity. It is implemented using NodeJs. The `client-readable` is the frontend project implemented with ReactJs and Redux.
+
+The `client-readable` project has the `public` folder which contains the template html. The actual implementation can be found under `src` folder.
+
+The initialization of React application and Redux is in `src/index.js`. The createtion of the Redux store is in its own file `src/store.js`. The Redux actions are in `src/actions/index.js` and the reducers are under `src/reducers`.
+
+The React Components can be found under `src/components`. The `stc/components/App.js` contains the Routes for the project. Under `src/components/views` are the container components for all the four views of the project. They are the only components connected to Redux. The other components are organized to folders by the feature they are related to.
+
+The API to the API server is implemented in `src/utils/api.js`. Also in the utils folder there is `uuid.js` which is used to generate ids for the posts and comments which are created by the user.
+
+#### Styles
+
+The project uses bootsrap which is included via link in `public/index.html`. The project also has one own css file which is `src/index.css`.
 
 ## API Server
 

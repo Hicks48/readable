@@ -37,7 +37,8 @@ class PostCreateEditView extends React.Component {
 
         newPost.id = postId !== 'new' ? postId : generateUUID()
 
-        newPost.voteScore = 0
+        newPost.voteScore = newPost.voteScore ? newPost.voteScore : 0
+
         newPost.deleted = false
 
         newPost.timestamp = Date.now()

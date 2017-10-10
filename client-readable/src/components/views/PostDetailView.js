@@ -17,7 +17,7 @@ import CommentsList from '../comments/CommentsList'
 class PostDetailView extends React.Component {
 
     componentWillMount() {
-        const postId = this.props.match.params.id
+        const postId = this.props.match.params.post_id
 
         this.props.fetchPostDetails(postId)
         this.props.fetchCommentsForPost(postId)

@@ -31,12 +31,12 @@ class PostList extends React.Component {
 
     onPostSelect = (post) => {
         const { history } = this.props
-        history.push(`/post/${post.id}`)
+        history.push(`/${post.category}/${post.id}`)
     }
 
     render() {
         let { posts, sortMethod } = this.state
-        const { onDelete } = this.props
+        const { onDelete, onUpVote, onDownVote } = this.props
 
         posts = posts.sort(sortMethod)
 
@@ -56,7 +56,13 @@ class PostList extends React.Component {
                 </div>
                 <ol className='list-group'>
                     {posts.filter((post) => !post.deleted).map((post) => (
-                        <PostListItem key={post.id} post={post} onPostSelect={this.onPostSelect} onDelete={onDelete}/>
+                        <PostListItem 
+                            key={post.id} 
+                            post={post} 
+                            onPostSelect={this.onPostSelect} onDelete={onDelete}
+                            onUpVote={onUpVote}
+                            onDownVote={onDownVote}
+                        />
                     ))}
                 </ol>
             </div>

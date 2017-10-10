@@ -10,13 +10,13 @@ class PostListItem extends React.Component {
         const {onPostSelect} = this.props
         const elementType = event.target.tagName
 
-        if (elementType !== 'A' && elementType !== 'BUTTON') {
+        if (elementType !== 'A' && elementType !== 'BUTTON' && elementType !== 'I') {
             onPostSelect(post)   
         }
     }
 
     render() {
-        const { post, onDelete } = this.props
+        const { post, onDelete, onUpVote, onDownVote } = this.props
 
         return (
             <li className='list-group-item'>
@@ -33,6 +33,20 @@ class PostListItem extends React.Component {
                             onClick={() => onDelete(post)}
                         >
                             Delete
+                        </button>
+                        <button 
+                            type='button' 
+                            className='card-link btn btn-info icon-large'
+                            onClick={() => onUpVote(post)}
+                        >
+                            <i className='ion-thumbsup'></i>
+                        </button>
+                        <button 
+                            type='button' 
+                            className='card-link btn btn-basic icon-large'
+                            onClick={() => onDownVote(post)}
+                        >
+                            <i className='ion-thumbsdown'></i>
                         </button>
                     </div>
                 </div>

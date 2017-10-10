@@ -45,6 +45,10 @@ export function deleteComment(comment) {
     return doDeleteRequest(`comments/${comment.id}`, {})
 }
 
+export function votePost(post, option) {
+    return doPostRequest(`posts/${post.id}`, { option })
+}
+
 function doPostRequest(resourcePath, data) {
     return fetch(getRequestAddress(resourcePath), getPostRequestHeaders(data)).then((response) => ( response.json() ))
 }

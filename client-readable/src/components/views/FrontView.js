@@ -1,7 +1,13 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { fetchPosts, fetchCategories, deletePost } from '../../actions'
+import { 
+    fetchPosts,
+    fetchCategories, 
+    deletePost,
+    upVotePost,
+    downVotePost
+} from '../../actions'
 
 import FrontPageLink from '../FrontPageLink'
 import CategoriesList from '../categories/CategoriesList'
@@ -15,13 +21,21 @@ class FrontView extends React.Component {
     }
 
     render() {
-        const { posts, categories, history, deletePost } = this.props
+        const { posts, categories,
+                history, deletePost,
+                downVote, upVote } = this.props
         
         return (
             <div>
                 <FrontPageLink/>
                 <CategoriesList categories={categories}/>
-                <PostList posts={posts} history={history} onDelete={(post) => deletePost(post)}/>
+                <PostList 
+                    posts={posts} 
+                    history={history} 
+                    onDelete={(post) => deletePost(post)}
+                    onUpVote={upVote}
+                    onDownVote={downVote}
+                />
             </div>
         )
     }
@@ -38,7 +52,9 @@ function mapStateToProps({ posts, categories }) {
     return {
       fetchCategories: () => dispatch(fetchCategories()),
       fetchPosts: () => dispatch(fetchPosts()),
-      deletePost: (post) => dispatch(deletePost(post))
+      deletePost: (post) => dispatch(deletePost(post)),
+      upVote: (post) => dispatch(upVotePost(post)),
+      downVote: (post) => dispatch(downVotePost(post))
     }
   }
 

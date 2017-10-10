@@ -9,7 +9,7 @@ class CategoriesListItem extends React.Component {
 
         return (
             <li className='category-list-item'>
-                <Link to={`/category/${category.name}`}>
+                <Link to={`/${category.name}`}>
                     <span className='badge badge-info'>{category.name}</span>
                 </Link>
             </li>

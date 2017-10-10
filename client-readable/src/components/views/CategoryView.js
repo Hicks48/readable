@@ -9,7 +9,7 @@ import PostList from '../posts/PostList'
 class CategoryView extends React.Component {
 
     componentWillMount() {
-        const category = this.props.match.params.name
+        const category = this.getCategory()
         this.props.fetchPostsForCategory(category)
     }
 
@@ -26,7 +26,7 @@ class CategoryView extends React.Component {
     }
 
     getCategory = () => (
-        this.props.match.params.name
+        this.props.match.params.category
     )
 }
 

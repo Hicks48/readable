@@ -13,9 +13,9 @@ class App extends React.Component {
     return (
       <div>
         <Route exact path='/' component={FrontView}></Route>
-        <Route exact path='/category/:name' component={CategoryView}></Route>
-        <Route exact path='/post/:id' component={PostDetailView}></Route>
         <Route exact path='/post/editornew/:id' component={PostCreateEditView}></Route>
+        <Route exact path='/:category' component={CategoryView}></Route>
+        <Route exact path='/:category/:post_id' component={PostDetailView}></Route>
       </div>
     )
   }

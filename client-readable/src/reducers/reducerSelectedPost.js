@@ -4,7 +4,9 @@ import {
     CLEAR_SELECTED_POST,
     CREATE_COMMENT,
     EDIT_COMMENT,
-    DELETE_COMMENT
+    DELETE_COMMENT,
+    UP_VOTE_COMMENT,
+    DOWN_VOTE_COMMENT
 } from '../actions'
 
 const defaultState = {
@@ -37,6 +39,13 @@ export function selectedPost(state = defaultState, action) {
             const deletedComment = action.comment
             return { ...state, comments: state.comments.map((comment) => (
                 comment.id === deletedComment.id ? deletedComment : comment
+            )) }
+
+        case UP_VOTE_COMMENT:
+        case DOWN_VOTE_COMMENT:
+            const votedComment = action.comment
+            return { ...state, comments: state.comments.map((comment) => (
+                comment.id === votedComment.id ? votedComment : comment
             )) }
 
         default:

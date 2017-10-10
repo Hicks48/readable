@@ -7,7 +7,11 @@ import {
     deletePost,
     createComment,
     editComment, 
-    deleteComment 
+    deleteComment,
+    upVotePost,
+    downVotePost,
+    upVoteComment,
+    downVoteComment
 } from '../../actions'
 
 import FrontPageLink from '../FrontPageLink'
@@ -30,19 +34,29 @@ class PostDetailView extends React.Component {
     }
 
     render() {
-        const { createComment, editComment, deleteComment } = this.props
+        const { createComment, editComment,
+                deleteComment, upVoteComment,
+                downVoteComment, upVotePost, downVotePost } = this.props
+
         const { postDetails, comments } = this.props.selectedPost
 
         return (
             <div>
                 <FrontPageLink/>
                 <h1>Post Details</h1>
-                <PostDetails postDetails={postDetails} onDelete={this.onPostDelete}/>
+                <PostDetails 
+                    postDetails={postDetails} 
+                    onDelete={this.onPostDelete}
+                    upVotePost={upVotePost}
+                    downVotePost={downVotePost}
+                />
                 <CommentsList
                     comments={comments}
                     createComment={createComment}
                     editComment={editComment}
                     deleteComment={deleteComment}
+                    upVoteComment={upVoteComment}
+                    downVoteComment={downVoteComment}
                     parentPost={postDetails}
                 />
             </div>
@@ -63,7 +77,11 @@ function mapDispatchToProps(dispatch) {
         deletePost: (post) => dispatch(deletePost(post)),
         createComment: (comment) => dispatch(createComment(comment)),
         editComment: (comment) => dispatch(editComment(comment)),
-        deleteComment: (comment) => dispatch(deleteComment(comment))
+        deleteComment: (comment) => dispatch(deleteComment(comment)),
+        upVotePost: (post) => dispatch(upVotePost(post)),
+        downVotePost: (post) => dispatch(downVotePost(post)),
+        upVoteComment: (comment) => dispatch(upVoteComment(comment)),
+        downVoteComment: (comment) => dispatch(downVoteComment(comment))
     }
 }
 

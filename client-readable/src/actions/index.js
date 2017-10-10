@@ -14,6 +14,8 @@ export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const UP_VOTE_POST = 'UP_VOTE_POST'
 export const DOWN_VOTE_POST = 'DOWN_VOTE_POST'
+export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'
+export const DOWN_VOTE_COMMENT = 'DOWN_VOTE_COMMENT'
 
 const receivePosts = (posts) => ({
     type: FETCH_POSTS,
@@ -134,4 +136,22 @@ export const upVotePost = (post) => (dispatch) => {
 
 export const downVotePost = (post) => (dispatch) => {
     API.votePost(post, 'downVote').then(responsePost => dispatch(receiveDownVote(responsePost)))
+}
+
+const receiveCommentUpVote = (comment) => ({
+    type: UP_VOTE_COMMENT,
+    comment
+})
+
+const receiveCommentDownVote = (comment) => ({
+    type: DOWN_VOTE_COMMENT,
+    comment
+})
+
+export const downVoteComment = (comment) => (dispatch) => {
+    API.voteComment(comment, 'downVote').then(responseComment => dispatch(receiveCommentDownVote(responseComment)))
+}
+
+export const upVoteComment = (comment) => (dispatch) => {
+    API.voteComment(comment, 'upVote').then(responseComment => dispatch(receiveCommentUpVote(responseComment)))
 }

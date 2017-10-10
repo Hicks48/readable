@@ -49,6 +49,10 @@ export function votePost(post, option) {
     return doPostRequest(`posts/${post.id}`, { option })
 }
 
+export function voteComment(comment, option) {
+    return doPostRequest(`comments/${comment.id}`, { option })
+}
+
 function doPostRequest(resourcePath, data) {
     return fetch(getRequestAddress(resourcePath), getPostRequestHeaders(data)).then((response) => ( response.json() ))
 }

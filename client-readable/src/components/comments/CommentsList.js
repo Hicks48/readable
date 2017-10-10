@@ -48,7 +48,7 @@ class CommentsList extends React.Component {
     }
 
     render() {
-        const { comments, deleteComment } = this.props
+        const { comments, deleteComment, upVoteComment, downVoteComment } = this.props
         const { modalVisible, comment } = this.state
 
         return (
@@ -74,6 +74,8 @@ class CommentsList extends React.Component {
                                 comment={comment}
                                 onCommentEdit={this.onCommentEdit}
                                 onCommentDelete={deleteComment}
+                                onUpVote={upVoteComment}
+                                onDownVote={downVoteComment}
                             />
                     ))}
                 </ul>

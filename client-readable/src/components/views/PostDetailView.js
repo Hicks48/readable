@@ -49,7 +49,7 @@ class PostDetailView extends React.Component {
                     onDelete={this.onPostDelete}
                     onUpVote={upVotePost}
                     onDownVote={downVotePost}
-                    commentCount={comments.length}
+                    commentCount={comments.filter((comment) => !comment.deleted).length}
                 />
                 <CommentsList
                     comments={comments}

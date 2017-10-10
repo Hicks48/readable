@@ -27,9 +27,10 @@ export function posts(state = [], action) {
         case UP_VOTE_POST:
         case DOWN_VOTE_POST:
             const votedPost = action.post
-            return state.map((post) => (
-                post.id === votedPost.id ? votedPost : post
-            ))
+            return state.map((post) => {
+                if (post.id === votedPost.id) post.voteScore = votedPost.voteScore
+                return post
+            })
 
         case DELETE_POST:
             const deletedPost = action.post

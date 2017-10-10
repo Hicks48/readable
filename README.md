@@ -20,6 +20,8 @@ clicking a category on the main view.
 
 * Post form can be used to create a new post or edit existing one. It is accesible from the create new post and edit buttons.
 
+* User can now up vote and down vote both posts and comments.
+
 ## Running the project
 
 To run the project you need to install all the dependencies for the API server and the client-readable projects. Open two terminal windows. With one of them navigate to `api-server` folder and run commands:

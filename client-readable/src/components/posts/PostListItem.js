@@ -26,6 +26,7 @@ class PostListItem extends React.Component {
                         <h6 className='card-subtitle mb-2'>by {post.author} at <TimestampSpan timestamp={post.timestamp}/></h6>
                         <h6 className='card-subtitle mb-2'>category: {post.category}</h6>
                         <h6 className='card-subtitle mb-2'>score: {post.voteScore}</h6>
+                        <h6 className='card-subtitle mb-2'>comment count: {post.commentCount ? post.commentCount : 0}</h6>
                         <Link to={`/post/editornew/${post.id}`} className='card-link btn btn-warning'>Edit</Link>
                         <button 
                             type='button'

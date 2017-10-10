@@ -39,7 +39,7 @@ class PostDetailView extends React.Component {
                 downVoteComment, upVotePost, downVotePost } = this.props
 
         const { postDetails, comments } = this.props.selectedPost
-
+        
         return (
             <div>
                 <FrontPageLink/>
@@ -49,6 +49,7 @@ class PostDetailView extends React.Component {
                     onDelete={this.onPostDelete}
                     onUpVote={upVotePost}
                     onDownVote={downVotePost}
+                    commentCount={comments.length}
                 />
                 <CommentsList
                     comments={comments}

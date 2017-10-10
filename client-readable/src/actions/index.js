@@ -16,15 +16,32 @@ export const UP_VOTE_POST = 'UP_VOTE_POST'
 export const DOWN_VOTE_POST = 'DOWN_VOTE_POST'
 export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'
 export const DOWN_VOTE_COMMENT = 'DOWN_VOTE_COMMENT'
+export const FETCH_COMMENT_COUNT_FOR_POST = 'FETCH_COMMENT_COUNT_FOR_POST'
 
 const receivePosts = (posts) => ({
     type: FETCH_POSTS,
     posts
 })
 
-export const fetchPosts = () => (dispatch) => (
-    API.fetchPosts().then(posts => dispatch(receivePosts(posts)))
-)
+const receiveCommentCountForPost = (post, commentCount) => ({
+    type: FETCH_COMMENT_COUNT_FOR_POST,
+    post,
+    commentCount
+})
+
+export const fetchPosts = () => (dispatch) => {
+    API.fetchPosts()
+        .then(posts => {
+            dispatch(receivePosts(posts))
+            return posts
+        })
+        .then(posts => {
+            posts.forEach((post) => {
+                API.fetchCommentsForPost(post.id)
+                    .then(responseComments => dispatch(receiveCommentCountForPost(post, responseComments.length)))
+            })
+        })
+}
 
 const receivePostsForCategory = (posts) => ({
     type: FETCH_POSTS_FOR_CATEGORIES,

@@ -49,7 +49,17 @@ const receivePostsForCategory = (posts) => ({
 })
 
 export const fetchPostsForCategory = (category) => (dispatch) => (
-    API.fetchPostsForCategory(category).then(posts => dispatch(receivePostsForCategory(posts)))
+    API.fetchPostsForCategory(category)
+        .then(posts => {
+            dispatch(receivePostsForCategory(posts))
+            return posts
+        })
+        .then(posts => {
+            posts.forEach((post) => {
+                API.fetchCommentsForPost(post.id)
+                    .then(responseComments => dispatch(receiveCommentCountForPost(post, responseComments.length)))
+            })
+        })
 )
 
 const receiveCategories = (categories) => ({

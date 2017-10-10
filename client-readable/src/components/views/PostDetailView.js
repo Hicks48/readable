@@ -47,8 +47,8 @@ class PostDetailView extends React.Component {
                 <PostDetails 
                     postDetails={postDetails} 
                     onDelete={this.onPostDelete}
-                    upVotePost={upVotePost}
-                    downVotePost={downVotePost}
+                    onUpVote={upVotePost}
+                    onDownVote={downVotePost}
                 />
                 <CommentsList
                     comments={comments}

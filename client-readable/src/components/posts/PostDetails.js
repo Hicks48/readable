@@ -6,7 +6,7 @@ import TimestampSpan from '../common/TimestampSpan'
 class PostDetails extends React.Component {
 
     render() {
-        const { postDetails, onDelete } = this.props
+        const { postDetails, onDelete, onUpVote, onDownVote } = this.props
         
         if (!postDetails) {
             return (<div></div>)
@@ -27,6 +27,20 @@ class PostDetails extends React.Component {
                             onClick={() => onDelete(postDetails)}
                         >
                             Delete
+                        </button>
+                        <button 
+                            type='button' 
+                            className='card-link btn btn-info icon-large'
+                            onClick={() => onUpVote(postDetails)}
+                        >
+                            <i className='ion-thumbsup'></i>
+                        </button>
+                        <button 
+                            type='button' 
+                            className='card-link btn btn-basic icon-large'
+                            onClick={() => onDownVote(postDetails)}
+                        >
+                            <i className='ion-thumbsdown'></i>
                         </button>
                     </div>
                 </div>

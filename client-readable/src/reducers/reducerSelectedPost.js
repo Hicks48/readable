@@ -6,7 +6,9 @@ import {
     EDIT_COMMENT,
     DELETE_COMMENT,
     UP_VOTE_COMMENT,
-    DOWN_VOTE_COMMENT
+    DOWN_VOTE_COMMENT,
+    UP_VOTE_POST,
+    DOWN_VOTE_POST
 } from '../actions'
 
 const defaultState = {
@@ -40,6 +42,13 @@ export function selectedPost(state = defaultState, action) {
             return { ...state, comments: state.comments.map((comment) => (
                 comment.id === deletedComment.id ? deletedComment : comment
             )) }
+
+        case UP_VOTE_POST:
+        case DOWN_VOTE_POST:
+            const votedPost = action.post
+            const newState = { ...state }
+            if (votedPost.id === newState.postDetails.id) newState.postDetails.voteScore = votedPost.voteScore
+            return newState
 
         case UP_VOTE_COMMENT:
         case DOWN_VOTE_COMMENT:

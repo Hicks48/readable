@@ -17,6 +17,7 @@ import {
 import PostDetails from '../posts/PostDetails'
 import CommentsList from '../comments/CommentsList'
 import NotFoundView from './NotFoundView'
+import NavigationBar from './NavigationBar'
 
 class PostDetailView extends React.Component {
 
@@ -51,6 +52,7 @@ class PostDetailView extends React.Component {
         
         return (
             <div>
+                <NavigationBar/>
                 <h1>Post Details</h1>
                 <PostDetails 
                     postDetails={postDetails} 

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import PostForm from '../posts/PostForm'
+import NavigationBar from './NavigationBar'
 
 import { connect } from 'react-redux'
 import { fetchPostDetails, fetchCategories, createPost, editPost, clearSelectedPost } from '../../actions'
@@ -51,6 +52,7 @@ class PostCreateEditView extends React.Component {
 
         return (
             <div>
+                <NavigationBar/>
                 <h1>PostCreateEditView</h1>
                 <PostForm 
                     post={post} 

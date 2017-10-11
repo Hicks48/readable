@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchPostsForCategory, deletePost, upVotePost, downVotePost } from '../../actions'
 
 import PostList from '../posts/PostList'
+import NavigationBar from './NavigationBar'
 
 class CategoryView extends React.Component {
 
@@ -17,6 +18,7 @@ class CategoryView extends React.Component {
 
         return (
             <div>
+                <NavigationBar/>
                 <h1>Category {this.getCategory()}</h1>
                 <PostList 
                     posts={posts}

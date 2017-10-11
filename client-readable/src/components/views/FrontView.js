@@ -11,6 +11,7 @@ import {
 
 import CategoriesList from '../categories/CategoriesList'
 import PostList from '../posts/PostList'
+import NavigationBar from './NavigationBar'
 
 class FrontView extends React.Component {
 
@@ -26,6 +27,7 @@ class FrontView extends React.Component {
         
         return (
             <div>
+                <NavigationBar/>
                 <CategoriesList categories={categories}/>
                 <PostList 
                     posts={posts} 

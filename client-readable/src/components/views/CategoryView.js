@@ -3,7 +3,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPostsForCategory, deletePost, upVotePost, downVotePost } from '../../actions'
 
-import FrontPageLink from '../FrontPageLink'
 import PostList from '../posts/PostList'
 
 class CategoryView extends React.Component {
@@ -18,7 +17,6 @@ class CategoryView extends React.Component {
 
         return (
             <div>
-                <FrontPageLink/>
                 <h1>Category {this.getCategory()}</h1>
                 <PostList 
                     posts={posts}

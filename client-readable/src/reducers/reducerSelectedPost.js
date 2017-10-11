@@ -45,6 +45,8 @@ export function selectedPost(state = defaultState, action) {
 
         case UP_VOTE_POST:
         case DOWN_VOTE_POST:
+            if (state.postDetails == null) return state
+
             const votedPost = action.post
             const newState = { ...state }
             if (votedPost.id === newState.postDetails.id) newState.postDetails.voteScore = votedPost.voteScore

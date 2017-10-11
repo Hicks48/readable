@@ -14,9 +14,9 @@ import {
     downVoteComment
 } from '../../actions'
 
-import FrontPageLink from '../FrontPageLink'
 import PostDetails from '../posts/PostDetails'
 import CommentsList from '../comments/CommentsList'
+import NotFoundView from './NotFoundView'
 
 class PostDetailView extends React.Component {
 
@@ -34,6 +34,15 @@ class PostDetailView extends React.Component {
     }
 
     render() {
+        const postId = this.props.match.params.post_id
+
+        if (!this.props.selectedPost ||
+             !this.props.selectedPost.postDetails ||
+              !this.props.selectedPost.postDetails.id ||
+                this.props.selectedPost.postDetails.id !== postId) {
+            return (<NotFoundView/>)
+        }
+
         const { createComment, editComment,
                 deleteComment, upVoteComment,
                 downVoteComment, upVotePost, downVotePost } = this.props
@@ -42,7 +51,6 @@ class PostDetailView extends React.Component {
         
         return (
             <div>
-                <FrontPageLink/>
                 <h1>Post Details</h1>
                 <PostDetails 
                     postDetails={postDetails} 

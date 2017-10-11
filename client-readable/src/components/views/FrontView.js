@@ -9,7 +9,6 @@ import {
     downVotePost
 } from '../../actions'
 
-import FrontPageLink from '../FrontPageLink'
 import CategoriesList from '../categories/CategoriesList'
 import PostList from '../posts/PostList'
 
@@ -27,7 +26,6 @@ class FrontView extends React.Component {
         
         return (
             <div>
-                <FrontPageLink/>
                 <CategoriesList categories={categories}/>
                 <PostList 
                     posts={posts} 

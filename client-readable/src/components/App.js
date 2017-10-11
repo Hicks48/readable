@@ -1,10 +1,12 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import FrontView from './views/FrontView'
 import CategoryView from './views/CategoryView'
 import PostDetailView from './views/PostDetailView'
 import PostCreateEditView from './views/PostCreateEditView'
+import NotFoundView from './views/NotFoundView'
+import NavigationBar from './views/NavigationBar'
 
 class App extends React.Component {
   
@@ -12,10 +14,15 @@ class App extends React.Component {
 
     return (
       <div>
-        <Route exact path='/' component={FrontView}></Route>
-        <Route exact path='/post/editornew/:id' component={PostCreateEditView}></Route>
-        <Route exact path='/:category' component={CategoryView}></Route>
-        <Route exact path='/:category/:post_id' component={PostDetailView}></Route>
+        <NavigationBar/>
+        <Switch>
+          <Route exact path='/' component={FrontView}></Route>
+          <Route exact path='/notfound' component={NotFoundView}></Route>
+          <Route exact path='/post/editornew/:id' component={PostCreateEditView}></Route>
+          <Route exact path='/:category' component={CategoryView}></Route>
+          <Route exact path='/:category/:post_id' component={PostDetailView}></Route>
+          <Route exact path='*' component={NotFoundView}></Route>
+        </Switch>
       </div>
     )
   }
